@@ -5,7 +5,7 @@ import sys
 import os
 
 # Desenha um retangulo onde o phone foi encontrado
-def show_finded_phone(path, img_name, x, y):
+def show_finded_phone(path, img_name, x_n, y_n):
 	# Carrega a imagem
 	img = cv2.imread(path + '/' + img_name)
 
@@ -14,8 +14,8 @@ def show_finded_phone(path, img_name, x, y):
 	print(img.shape)
 
 	# Muda das coordenadas normalizadas para a posicao dos pixels na imagem
-	x = int(float(x) * img_shape[1])
-	y = int(float(y) * img_shape[0])
+	x = int(float(x_n) * img_shape[1])
+	y = int(float(y_n) * img_shape[0])
 	factor = 30
 
 	# Desenha um retangulo ao redor do telefone
@@ -42,4 +42,6 @@ def read_labels(path):
 # ----- main -----
 path = str(sys.argv[1])
 read_labels(path)
+
+# Teste para o primeiro exemplo do labels.txt
 # show_finded_phone(path, '/1.jpg', 0.8714, 0.1718)

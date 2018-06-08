@@ -8,9 +8,6 @@ def find_image(img_path, show_img = None):
 	img = cv2.imread(img_path)
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	phones = phone_cascade.detectMultiScale(gray, 1.3, 5)
-
-	# print('Img shape: ' + str(img.shape))
-	# print('Coord phone: ' + str(phones[0]))
 	
 	if phones is not None and len(phones) > 0:
 		x, y, w, h = phones[0]

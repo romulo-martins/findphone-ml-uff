@@ -38,7 +38,6 @@ def read_labels(path):
 			show_finded_phone(path, temp[0], temp[1], temp[2])
 	f.closed
 
-
 def main():
 	path = str(sys.argv[1])
 	read_labels(path)

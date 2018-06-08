@@ -39,9 +39,11 @@ def read_labels(path):
 	f.closed
 
 
-# ----- main -----
-path = str(sys.argv[1])
-read_labels(path)
-
-# Teste para o primeiro exemplo do labels.txt
-# show_finded_phone(path, '/1.jpg', 0.8714, 0.1718)
+def main():
+	path = str(sys.argv[1])
+	read_labels(path)
+	# Teste para o primeiro exemplo do labels.txt
+	# show_finded_phone(path, '/1.jpg', 0.8714, 0.1718)
+ 
+if __name__ == '__main__':
+    main()

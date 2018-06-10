@@ -9,7 +9,7 @@ def find_image(img_path, show_img = None):
 		return 'Error: Nao foi possivel encontrar a imagem no diretorio!'
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-	phone_cascade = cv2.CascadeClassifier('cascades/phone_cascade.xml')
+	phone_cascade = cv2.CascadeClassifier('cascades/cascade.xml')
 	phones = phone_cascade.detectMultiScale(gray, 1.3, 5)
 
 	if show_img:

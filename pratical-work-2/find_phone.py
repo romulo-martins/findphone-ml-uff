@@ -3,13 +3,18 @@ import numpy as np
 import cv2
 import sys
 
+CASCADE_PATH = 'data/cascade.xml'
+
+def show_img_on_window():
+	pass
+
 def find_image(img_path, show_img = None):
 	img = cv2.imread(img_path)
 	if img is None:
 		return 'Error: Nao foi possivel encontrar a imagem no diretorio!'
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-	phone_cascade = cv2.CascadeClassifier('cascades/cascade.xml')
+	phone_cascade = cv2.CascadeClassifier(CASCADE_PATH)
 	phones = phone_cascade.detectMultiScale(gray, 1.3, 5)
 
 	if show_img:
@@ -30,8 +35,13 @@ def find_image(img_path, show_img = None):
 	return str(x_n) + ' ' + str(y_n)	
 
 def main():
+	# Recebe como parametro o caminho da imagem a ser buscada
 	file_path = str(sys.argv[1])
+
+	# Verifica se a opcao de exibir a imagem foi passada por parametro
 	show_img = '--showimg' in sys.argv[1:]
+
+	# Chama a funcao para encontrar a imagem, retorna as coordenadas normalizadas
 	print find_image(file_path, show_img)
  
 if __name__ == '__main__':

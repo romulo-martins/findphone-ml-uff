@@ -64,9 +64,13 @@ Algumas considerações importantes sobre o script de treinamento são:
 - Se desejar utilizar outras imagens para servir de negativos para o treinamento, é necessario que coloca-las na pasta `neg/`.
 - O script de treinamento leva em consideração apenas as imagens que possui suas coordenadas em *label.txt* para as imagens positivas.
 - Foram utilizados apenas 15 etapas (*num stages*) para treinamento, podendo ser alterado para uma maior precisão.
-- Na pasta *cascades* foi incluido um cascade chamando *phone_cascade.xml* que foi treinado de forma mais minuciosa, e que demorou muitas horas para ser treinado. Se desejar utiliza-lo para teste basta executar:
+- Na pasta *cascades* foi incluido um cascade chamando *phone_cascade.xml* que foi treinado de forma mais minuciosa, e que demorou muitas horas para ser treinado. Se desejar utiliza-lo para teste basta descomantar a variaval:
 ```
-> python find_phone.py ~/find_phone_data/51.jpg -cascade cascades/phone_cascade.xml
+CASCADE_PATH = 'cascades/phone_cascade.xml'
+```
+e comentar
+```
+CASCADE_PATH = 'data/cascade.xml'
 ```
 
 ## Referências:

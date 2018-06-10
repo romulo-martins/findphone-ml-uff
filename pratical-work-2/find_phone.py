@@ -3,10 +3,17 @@ import numpy as np
 import cv2
 import sys
 
+# Para utilizar um cascade ja treinado, descomente o 'cascades/phone_cascade.xml' e comente o outro.
+# CASCADE_PATH = 'cascades/phone_cascade.xml'
 CASCADE_PATH = 'data/cascade.xml'
 
-def show_img_on_window():
-	pass
+def show_img_on_window(img, phones):
+	for (x, y, w, h) in phones:
+		cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+
+		cv2.imshow('phone', img)
+		cv2.waitKey(0)
+		cv2.destroyAllWindows()
 
 def find_image(img_path, show_img = None):
 	img = cv2.imread(img_path)
@@ -18,12 +25,7 @@ def find_image(img_path, show_img = None):
 	phones = phone_cascade.detectMultiScale(gray, 1.3, 5)
 
 	if show_img:
-		for (x, y, w, h) in phones:
-			cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-
-		cv2.imshow('phone', img)
-		cv2.waitKey(0)
-		cv2.destroyAllWindows()
+		show_img_on_window(img, phones)
 
 	if phones is None or len(phones) < 1:
 		return 'Error: O telefone nao foi encontrado na imagem!'
@@ -42,7 +44,7 @@ def main():
 	show_img = '--showimg' in sys.argv[1:]
 
 	# Chama a funcao para encontrar a imagem, retorna as coordenadas normalizadas
-	print find_image(file_path, show_img)
+	print(find_image(file_path, show_img))
  
 if __name__ == '__main__':
     main()

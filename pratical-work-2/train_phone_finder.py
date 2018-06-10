@@ -43,9 +43,9 @@ def convert_labels_to_train(path):
 	with open(path + 'info.txt', 'w') as f:
 		for line in read_data:
 			temp = line.split()
-			print(path, temp[0], temp[1], temp[2]) # teste
+			print(path, temp[0], temp[1], temp[2])
 			x, y = convert_coords(path, temp[0], temp[1], temp[2])
-			show_finded_phone(path, temp[0], x, y) # teste
+			# show_finded_phone(path, temp[0], x, y)
 			f.write("{0} 1 {1} {2} {3} {4}\n".format(temp[0], x, y, FACTOR, FACTOR))
 	f.closed
 
